@@ -1,0 +1,46 @@
+--creating table for storing customer details 
+create table customer_details(
+    customer_ID int primary key,
+    customer_Name varchar(30),
+    city varchar(20),
+    phone int
+);
+#inserting data
+insert into customer_details values
+(1001,'Aishu','Pune',13547),
+(1002,'Bhanu','mumbai',23589),
+(1003,'Riya','hyderabad',13941),
+(1004,'Deva','kakinada',59870),
+(1005,'Sanjay','hyderabad',32521);
+
+create table product_details(
+    product_ID int primary key,
+    Product_name varchar(40),
+    Price int,
+    category varchar(30),
+    customer_ID int
+);
+
+--inserting data
+insert into product_details values
+(010,'Pencil box',200,'Stationery',1001),
+(020,'Chair',500,'Furniture',1002),
+(030,'Face Powder',900,'Cosmetics',1003),
+(040,'Black board',1500,'Stationery',1004),
+(050,'Sofa',5000,'Furniture',1005),
+(060,'Sunscreen',350,'Cosmetics',1006);
+
+
+
+select customer_name,city,phone from customer_details where city='hyderabad';
+
+select sum(price) as total_price from product_details group by category;
+
+select sum(price) as total_price from product_details group by category having total_price>1500;
+
+select Product_name,price from product_details where price  in (900,1500);
+
+select Product_name,price from product_details where price between 300 and 1500;
+
+select Product_name,price from product_details where price not in (200,5000);
+
